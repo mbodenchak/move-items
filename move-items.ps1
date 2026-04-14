@@ -5,7 +5,7 @@ $dest = Join-Path $baseDir "duplicates"
 New-Item -ItemType Directory -Path $dest -Force | Out-Null
 
 Get-Content $list | ForEach-Object {
-    $src = $_
+    $src = $_.Trim('"')
 
     if(Test-Path $src) {
         Move-Item $src -Destination $dest -Force
